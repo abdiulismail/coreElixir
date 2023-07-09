@@ -1,0 +1,13 @@
+The value types in elixir represents numbers, names and regular expressions
+
+integers
+========
+integer literals can be written as decimals(1234), hexadecimals(oxcafe),octal(0o765) and binary (0b1010)
+
+decimal numbers may contain underscores - these are often used to separate groups of three digits when writting 
+large numbers , so 1 million could be written as 1_000_000
+there is no fixed limit on the size of integers - their internal representation grows to fit their magnitude
+
+floating point numbers
+=======================
+

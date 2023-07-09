@@ -9,3 +9,5 @@ list2 = [1,2,[3,4,5]]
 
 
 IO.puts a
+IO.puts list1
+IO.puts list2

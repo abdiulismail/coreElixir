@@ -1,0 +1,14 @@
+these type reflect resources in the underlying erlang vm
+
+PID and Ports
+==============
+A PID is a reference to a local or remote process
+A Port is a reference to a resource (typically external to the application) that you will be reading ot writting to
+the PID of the current process is available by calling self
+
+---code-----
+iex(1)> self
+#PID<0.109.0>
+---end code----
+
+a new PID is created when you spawn a new process

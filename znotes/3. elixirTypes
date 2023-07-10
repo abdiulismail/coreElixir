@@ -11,3 +11,5 @@ there is no fixed limit on the size of integers - their internal representation 
 floating point numbers
 =======================
 
+floating point numbers are written as a decimal point.
+there must be at least one digit before and after the decimal point.

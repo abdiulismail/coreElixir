@@ -24,3 +24,7 @@ two atoms with the same name will always compare as equal
 ranges
 =======
 ranges are represented as start....end where start and end are integers
+
+regular expressions
+===================
+elixir has regular expression literals written as ~r{regexp} or ~r{regexp}opts

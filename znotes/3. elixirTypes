@@ -13,3 +13,14 @@ floating point numbers
 
 floating point numbers are written as a decimal point.
 there must be at least one digit before and after the decimal point.
+
+atoms
+=========
+Atoms are constants that represents somethings name.
+we write them using a leading colon(:) which can be followed by an atom word or an elixir operator
+An atom`s name is its value.
+two atoms with the same name will always compare as equal 
+
+ranges
+=======
+ranges are represented as start....end where start and end are integers

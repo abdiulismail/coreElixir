@@ -1,0 +1,30 @@
+elixir types can hold values of any type(including other collections)
+
+Tuples
+=======
+A tuple is an ordered collection of values.
+As will all elixir data structures , once created a tuple cannot be modified
+you write a tuple between braces, separating the elements with commas
+
+--code-------
+ { 1,2 }
+ --end code---
+
+a typical elixir tuple had two to four elements - any more and you will probably want to look at maps or structs
+
+you can use tuples in pattern matching
+
+----code-------
+iex(5)> {status, count, action } = {:ok,43,"next"}
+{:ok, 43, "next"}
+iex(6)> 
+---end code----------
+
+“t is common for functions to return a tuple where the first element
+is the atom :ok if there were no errors.”
+
+“​iex>​ {status, file} = File.open(​"​​mix.exs"​)​ 
+{:ok, #PID<0.39.0>}”
+
+“Because the file was successfully opened, the tuple contains an :ok
+status and a PID, which is how we access the contents.”

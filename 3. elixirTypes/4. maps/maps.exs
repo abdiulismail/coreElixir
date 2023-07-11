@@ -1,3 +1,7 @@
+# a map is a collection of key/value pairs.
+# a map literal looks like this :
+
+# %{key => value, key => value}
 
 states = %{
   "AL" => "Alabama",

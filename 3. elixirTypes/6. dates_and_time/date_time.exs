@@ -12,7 +12,7 @@ d1 = Date.new(2018,12,25)
 # ~D[2018-12-25]
 
 # iex> d1 == d2
-# true
+# true  
 
 # iex> Date.day_of_week(d1)
 # 2

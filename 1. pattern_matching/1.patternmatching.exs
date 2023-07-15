@@ -4,7 +4,7 @@ a = 1
 list1 = [1,2,3,4]
 list2 = [1,2,[3,4,5]]
 
-# using underscore
+# using underscore comment
 [1,_,_] = [1,2,3]
 
 

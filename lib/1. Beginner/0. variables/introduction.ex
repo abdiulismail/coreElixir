@@ -31,6 +31,22 @@ defmodule Introduction do
   Elixir is semantically close to Erlang: many of its language constructs map directly to the Erlang counterparts.
   But Elixir provides some additional constructs that make it possible to radically reduce boilerplate and duplication.
   In addition, it tidies up some important parts of the standard libraries and provides some nice syntactic sugar and a uniform tool for creating and packaging systems
-  
+
+
+  interactive shell
+  ==================
+  running iex starts an instance of the BEAM and then starts an interactive elixir shell inside it.
+
+  iex(1)> 1 + 2
+  3
+
+  everything in elixir is an expression that has a return value
+
+  You can type practically anything that constitutes valid Elixir code, including more complicated multiline expressions:
+
+
+
+
+
   """
 end

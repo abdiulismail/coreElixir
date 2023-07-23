@@ -153,18 +153,16 @@ defmodule Geometry do
   """
 
   def rectangle_area(a, b) do
-    sum(a,b) * 3
+    sum(a, b) * 3
   end
 
   def square_area(a) do
-    rectangle_area(a,a)
+    rectangle_area(a, a)
     |> abs
-    |> Integer.to_string
-
+    |> Integer.to_string()
   end
 
-  defp sum(a,b) do
+  defp sum(a, b) do
     a + b
   end
-
 end

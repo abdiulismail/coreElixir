@@ -1,4 +1,3 @@
-
 defmodule MyModules do
   @moduledoc """
    a module is a collection of functions.
@@ -40,8 +39,7 @@ defmodule MyModules do
 
   """
 
-  def rectangle_area(a,b) do
+  def rectangle_area(a, b) do
     a * b
   end
-
 end

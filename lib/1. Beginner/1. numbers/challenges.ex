@@ -55,18 +55,18 @@ defmodule Mymath do
   end
 
   # Write a function to check if an integer is a palindrome.
-  defmodule Checkpal do
-    def pal(a) when is_integer(a) do
-      a == reverse(a)
-    end
-
-    def reverse(a) do
-      a
-      |> Integer.to_string()
-      |> String.reverse()
-      |> String.to_integer()
-    end
+  def reverse(a) when is_integer(a) do
+    a
+    |> Integer.to_string()
+    |> String.reverse()
+    |> String.to_integer()
   end
+
+  def checkapl(a) do
+    a == reverse(a)
+  end
+
+  
 
   # find fibonnaci of a given number
 end

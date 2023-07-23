@@ -36,10 +36,54 @@ defmodule Geometry do
     |> Integer.to_string
     |> IO.puts
 
+
+    function arity
+    ===============
+    arity is a fancy name for the number of arguments a function recives.
+    a function is uniquely identified by its containing module, its name and its arity.
+    a function with arity of one /1 means it receives only one argument
+    a function with arity of two /2 means it receives two arguments and so on
+
+    two functions with the same name , but different arities are two different functions.
+    Rectangle.area/1
+    Rectangle.area/2
+
+    the name might be overloaded but the arities are different.
+
+    it usually makes no sense for different function with the same name to have completly different implementations.
+    more commonly, a lower-arity function delegates to a higher-arity function, providing default arguments.
+
+        defmodule calculator do
+          def sum(a) do
+            sum(a,0)
+          end
+
+          def sum(a,b) do
+            a + b
+          end
+        end
+
+    again a lower-arity function is implemented in terms of higher-arity one.
+    the pattern is so frequent that elixir allows  you to specify defualts for arguments using the \\ operator followed by default value
+
+        defmodule calculator do
+              def sum(a,b \\ 1, c, d \\ 2) do
+                a + b
+              end
+          end
+
+    function visibility
+    ===================
+    when you define a function using the def macro, the function is made public, it can be called by anyone else.
+    in elixir terminology its said the function is exported.
+
+    you can use the defp macro to make the function private.
+    a private function can be used only inside the module its defined in
+
   """
 
   def rectangle_area(a, b) do
-    a * b
+    sum(a,b) * 3
   end
 
   def square_area(a) do
@@ -48,4 +92,9 @@ defmodule Geometry do
     |> Integer.to_string
 
   end
+
+  defp sum(a,b) do
+    a + b
+  end
+
 end

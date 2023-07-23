@@ -133,8 +133,22 @@ defmodule Geometry do
      and can be accessed in runtime.
 
      elixir registers some attributes by default eg @moduledoc and @doc to provide documentation for modules and functions
-     
 
+
+  Type specification
+  ====================
+  typespec specification often called typespecs are another important feature based on attributes.
+  this feature allows you to provide type information for your functions which can be later analyzed with a static analysis tool called dialyzer
+
+          @spec rectangle_area(number,number) :: number
+          def rectangle_area(a,b) do
+            sum(a,b) * 3
+          end
+
+  here you see the @spec attribute to indicate that both functions accept and return a number
+
+  typespec provides a way of compensating for the lack of a static type system.
+  typespec allows you to document your code better
 
   """
 

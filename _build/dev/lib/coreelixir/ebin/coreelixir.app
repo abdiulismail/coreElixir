@@ -3,8 +3,7 @@
               {applications,[kernel,stdlib,elixir,logger,ex_doc]},
               {description,"coreelixir"},
               {modules,['Elixir.Geometry','Elixir.Introduction',
-                        'Elixir.MyModules','Elixir.Mymath',
-                        'Elixir.Mymath.Checkpal','Elixir.Mynumbes',
+                        'Elixir.MyModules','Elixir.Mymath','Elixir.Mynumbes',
                         'Elixir.Myvariable']},
               {registered,[]},
               {vsn,"0.1.0"}]}.

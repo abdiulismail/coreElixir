@@ -66,7 +66,29 @@ defmodule Mymath do
     a == reverse(a)
   end
 
-  
+  # Create a function to find the prime factors of a given integer.
+  # prime factors are the prime numbers that divide that integer exactly
 
-  # find fibonnaci of a given number
+  # defmodule PrimeFactors do
+  #   def find_prime_factors(n) when is_integer(n) and n > 1 do
+  #     find_prime_factors(n, 2, [])
+  #   end
+
+  #   defp find_prime_factors(1, _, factors) do
+  #     factors
+  #   end
+
+  #   defp find_prime_factors(n, divisor, factors) do
+  #     find_prime_factors(n, divisor + 1, factors)
+  #   end
+
+  #   defp find_prime_factors(n, divisor, factors) when rem(n, divisor) == 0 do
+  #     find_prime_factors(n, divisor, [divisor | factors])
+  #   end
+  # end
+
+  # Write a function to check if an integer is a power of two.
+
+ 
+
 end

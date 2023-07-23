@@ -39,8 +39,8 @@ defmodule Mymath do
   # Implement a function to count the number of digits in an integer.
   def mycount(a) when is_integer(a) do
     a
-    |> Integer.to_string
-    |> String.length
+    |> Integer.to_string()
+    |> String.length()
   end
 
   # find the factorial of a given number
@@ -55,7 +55,18 @@ defmodule Mymath do
   end
 
   # Write a function to check if an integer is a palindrome.
-  
+  defmodule Checkpal do
+    def pal(a) when is_integer(a) do
+      a == reverse(a)
+    end
+
+    def reverse(a) do
+      a
+      |> Integer.to_string()
+      |> String.reverse()
+      |> String.to_integer()
+    end
+  end
 
   # find fibonnaci of a given number
 end

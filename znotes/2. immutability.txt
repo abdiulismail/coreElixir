@@ -1,3 +1,0 @@
-IN Elixir, all values are immutable - once created cannot be changed
-
-if you want to change and play around with data , you need to get a copy then use it 

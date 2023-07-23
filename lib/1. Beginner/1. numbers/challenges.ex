@@ -111,7 +111,7 @@ defmodule Mymath do
   # ==========================================================================================
   # Implement a function to find the cube root of a positive integer (return the integer part).
   # working but needs to understand more
-  
+
   # defmodule MathUtils do
   #   def cube_root(n) when n < 0, do: {:error, "Input must be a positive integer"}
   #   def cube_root(n) when n == 0, do: 0
@@ -138,5 +138,28 @@ defmodule Mymath do
   #   defp compare(_, _), do: :eq
   # end
 
+  # Create a function to find the sum of all even integers up to a given positive integer.
+  # working but needs to understand more
+
+  defmodule MathUtils do
+    def sum_even_integers(n) when n <= 0, do: 0
+
+    def sum_even_integers(n) do
+      sum_even_integers(n, 0, 0)
+    end
+
+    defp sum_even_integers(n, current, total) when current > n, do: total
+
+    defp sum_even_integers(n, current, total) do
+      if rem(current, 2) == 0 do
+        sum_even_integers(n, current + 1, total + current)
+      else
+        sum_even_integers(n, current + 1, total)
+      end
+    end
+  end
+
+# most of the code challenges are rotating around control structures, we will
+# continue and return back when we finished control structures and pattern matching
 
 end

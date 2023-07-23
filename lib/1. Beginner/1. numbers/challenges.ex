@@ -110,6 +110,33 @@ defmodule Mymath do
 
   # ==========================================================================================
   # Implement a function to find the cube root of a positive integer (return the integer part).
-  def cuberoot(n) when is_integer(n) do
-  end
+  # working but needs to understand more
+  
+  # defmodule MathUtils do
+  #   def cube_root(n) when n < 0, do: {:error, "Input must be a positive integer"}
+  #   def cube_root(n) when n == 0, do: 0
+
+  #   def cube_root(n) do
+  #     cube_root(n, 1, n)
+  #   end
+
+  #   defp cube_root(n, low, high) when low > high, do: high
+
+  #   defp cube_root(n, low, high) do
+  #     mid = div(low + high, 2)
+  #     cube = mid * mid * mid
+
+  #     case compare(cube, n) do
+  #       :eq -> mid
+  #       :lt -> cube_root(n, mid + 1, high)
+  #       :gt -> cube_root(n, low, mid - 1)
+  #     end
+  #   end
+
+  #   defp compare(a, b) when a < b, do: :lt
+  #   defp compare(a, b) when a > b, do: :gt
+  #   defp compare(_, _), do: :eq
+  # end
+
+
 end

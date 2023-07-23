@@ -112,7 +112,30 @@ defmodule Geometry do
 
   Personally, I tend to avoid aliases, because they increase ambiguity.
   But in some cases they can improve readability, especially if you call functions from a long-named module many times.
-  
+
+  module attributes
+  ==================
+  modules attributes are of two types
+  1. those used as compile time constants
+
+          defmodule Circle do
+            @pi 3.14
+
+            def area(r) do
+              r * r * pi
+            end
+          end
+      the @pi constant exist only during compilation of the module
+
+  2. those registered for runtime
+
+     an attribute can also be registered, which means that it will be stored in the generated binary
+     and can be accessed in runtime.
+
+     elixir registers some attributes by default eg @moduledoc and @doc to provide documentation for modules and functions
+     
+
+
   """
 
   def rectangle_area(a, b) do

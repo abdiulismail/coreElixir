@@ -80,6 +80,39 @@ defmodule Geometry do
     you can use the defp macro to make the function private.
     a private function can be used only inside the module its defined in
 
+    imports and aliases
+    ==================
+    calling functions from another module can sometimes be cumbersome
+    because you need to reference the module name.
+    if your module often calls functions from another module, you can import that other module into your own
+    importing a module allows you to call its public functions without prefixing them with the module name
+
+          defmodule MyModule do
+            import IO
+
+            def myfunction do
+              puts "calling imported function"
+            end
+          end
+
+    Of course, you can import multiple modules. In fact, the standard library’s Kernel module is automatically imported into every module.
+    This is because Kernel contains functions that are often used, so automatic importing makes their usage easier.1.
+
+    an alternative to import is alias , a construct that makes it possible to reference a module under a different name
+
+          defmodule MyModule do
+            alias IO, as: MyIO
+
+            def myfunction do
+              MyIO.puts("calling imported alias function")
+            end
+          end
+
+  alias can be useful if a module has a long name.
+
+  Personally, I tend to avoid aliases, because they increase ambiguity.
+  But in some cases they can improve readability, especially if you call functions from a long-named module many times.
+  
   """
 
   def rectangle_area(a, b) do

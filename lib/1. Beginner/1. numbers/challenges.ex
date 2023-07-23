@@ -3,6 +3,7 @@ defmodule Mymath do
 
   # Write a function to calculate the
   # sum,difference,product,reminder,abs,even,odd,prime,gdc,lcm,sqrt of two integers.
+  # ==========================================================================================
   def myop(a, b) do
     sum = a + b
     diff = a - b
@@ -28,6 +29,7 @@ defmodule Mymath do
     ")
   end
 
+  # ==========================================================================================
   # Write a function to reverse the digits of an integer.
   def myrev(a) when is_integer(a) do
     a
@@ -36,12 +38,16 @@ defmodule Mymath do
     |> String.to_integer()
   end
 
+  # ==========================================================================================
+
   # Implement a function to count the number of digits in an integer.
   def mycount(a) when is_integer(a) do
     a
     |> Integer.to_string()
     |> String.length()
   end
+
+  # ==========================================================================================
 
   # find the factorial of a given number
   def factorial(0), do: 1
@@ -54,6 +60,8 @@ defmodule Mymath do
     "Factorial is only defined for non-negative integers."
   end
 
+  # ==========================================================================================
+
   # Write a function to check if an integer is a palindrome.
   def reverse(a) when is_integer(a) do
     a
@@ -65,6 +73,8 @@ defmodule Mymath do
   def checkapl(a) do
     a == reverse(a)
   end
+
+  # ==========================================================================================
 
   # Create a function to find the prime factors of a given integer.
   # prime factors are the prime numbers that divide that integer exactly
@@ -86,9 +96,20 @@ defmodule Mymath do
   #     find_prime_factors(n, divisor, [divisor | factors])
   #   end
   # end
+  # ==========================================================================================
 
-  # Write a function to check if an integer is a power of two.
+  # Write a function to check if an integer is a power of two , three and five.
 
- 
+  # ==========================================================================================
+  # Write a function to find the square root of a positive integer (return the integer part).
+  def findsqrt(n) when is_integer(n) do
+    # this from th erlang library , that is how we import them
+    :math.sqrt(n)
+    |> round()
+  end
 
+  # ==========================================================================================
+  # Implement a function to find the cube root of a positive integer (return the integer part).
+  def cuberoot(n) when is_integer(n) do
+  end
 end

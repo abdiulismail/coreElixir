@@ -4,6 +4,6 @@
               {description,"coreelixir"},
               {modules,['Elixir.Geometry','Elixir.Introduction',
                         'Elixir.MyModules','Elixir.Mymath','Elixir.Mynumbes',
-                        'Elixir.Myvariable']},
+                        'Elixir.Mysqr','Elixir.Myvariable']},
               {registered,[]},
               {vsn,"0.1.0"}]}.

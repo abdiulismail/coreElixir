@@ -1,6 +1,8 @@
 defmodule Myatoms do
   @moduledoc """
-   Atoms are literal named constants.
+   Atoms are  named constants.
+   the value of an atom is its own name
+
    Atoms constants start with a colon character, followed by a combination of alphanumeric
    and underscore characters
 
@@ -23,6 +25,8 @@ defmodule Myatoms do
 
    the variable doesnt contain the entire text, but only a reference to the atom table
    therefore memory consumption is low, the comparisons are fast and the code is still readable.
+
+   atoms are not garbage collected, which makes them lightweight and efficienct for use as keys, flags and other constants
 
 
     ALIASES
@@ -109,7 +113,15 @@ defmodule Myatoms do
 
     In both examples, short-circuit operators make it possible to write concise code with- out resorting to complicated nested conditional constructs.
 
+    atoms are not meant to hold large amounts of data.
+    if you need to work with large textual data, consider using strings instead
 
 
   """
+
+  def atomtest do
+    :hello
+    :banana
+
+  end
 end

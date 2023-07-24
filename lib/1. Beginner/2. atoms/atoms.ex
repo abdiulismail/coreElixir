@@ -1,4 +1,5 @@
 defmodule Myatoms do
+
   @moduledoc """
    Atoms are  named constants.
    the value of an atom is its own name
@@ -123,5 +124,13 @@ defmodule Myatoms do
     :hello
     :banana
 
+  end
+
+  def convertocharlist(atom) do
+    Atom.to_charlist(atom)
+  end
+
+  def convertostring(atom) do
+    Atom.to_string(atom)
   end
 end

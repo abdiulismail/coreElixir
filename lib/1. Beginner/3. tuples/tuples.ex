@@ -65,39 +65,32 @@ defmodule MyTuple do
 
     person = {"bob", 1}
 
-    exract = elem(person,1)
-    exract
+    _exract = elem(person,1)
+
 
     old_person = put_elem(person,1,45)
-    old_person
 
-    tuple_size(old_person)
+    _size = tuple_size(old_person)
 
     # insert an element at the end of a tuple
     # returns a new tuple with the elements appended at the end
     insert_new_person = Tuple.append(old_person,"kenya")
-    insert_new_person
 
     # delete the element at the given index from a tuple
     remove_new = Tuple.delete_at(insert_new_person,2)
-    remove_new
 
     # duplicates - creates a new tuple or any data passed , times the size passed
-    duplicate = Tuple.duplicate(remove_new, 3)
-    duplicate
+    _duplicate = Tuple.duplicate(remove_new, 3)
 
     # insert an element into a tuple
     # insert value at the given index
     insert = Tuple.insert_at(remove_new, 0,"test")
-    insert
 
     # product - Computes a product of tuple elements.
-    prod = Tuple.product({345,234})
-    prod
+    _prod = Tuple.product({345,234})
 
     # sum - Computes a sum of tuple elements.
-    sum = Tuple.sum({342,555})
-    sum
+    _sum = Tuple.sum({342,555})
 
     # to_list - Converts a tuple to a list.
     tolist = Tuple.to_list(insert)

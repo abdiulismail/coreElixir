@@ -11,8 +11,8 @@ defmodule TupleChallenges do
   # Write a function that takes a list of tuples,
   # where each tuple contains a person's name (string) and their age (integer).
   # The function should return the name of the oldest person in the list.
-  def quest2(mylsit) do
-    
+  def quest2(_mylsit) do
+
   end
 
 

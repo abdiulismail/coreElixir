@@ -108,24 +108,25 @@ defmodule MyList do
   # replace element at certain position
   def reple do
     prime_numbers = [1, 2, 3, 5, 7]
-    List.replace_at(prime_numbers,2,4)
+    List.replace_at(prime_numbers, 2, 4)
   end
 
   # insert new element - not good practice , always use pop like operation
   def inser do
     prime_numbers = [1, 2, 3, 5, 7]
-    List.insert_at(prime_numbers,3,4)
+    List.insert_at(prime_numbers, 3, 4)
     # insert at the end
-    List.insert_at(prime_numbers,-1,1)
+    List.insert_at(prime_numbers, -1, 1)
   end
 
   # concatenate two list
   def conc do
-    [1,2,4] ++ [5,6,7]
+    [1, 2, 4] ++ [5, 6, 7]
   end
 
   # traverse through list using recursion
   def traverse([]), do: []
+
   def traverse([head | tail]) do
     # do something with the head
     IO.puts("element #{head}")
@@ -135,11 +136,11 @@ defmodule MyList do
 
   # transform each element of a list , eg square each element
   def transfrm([]), do: []
+
   def transfrm([head | tail]) do
-     new_elemt = head ** 100000000000000000000000000
+    new_elemt = head * 2
     [new_elemt | transfrm(tail)]
     # IO.puts("#{new_elemt}")
     # transfrm(tail)
   end
-
 end

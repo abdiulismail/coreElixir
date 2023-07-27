@@ -159,7 +159,6 @@ defmodule Mymath do
     end
   end
 
-# most of the code challenges are rotating around control structures, we will
-# continue and return back when we finished control structures and pattern matching
-
+  # most of the code challenges are rotating around control structures, we will
+  # continue and return back when we finished control structures and pattern matching
 end

@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.30.3">
     <meta name="project" content="coreelixir v0.1.0">
 
-    <title>Myvariable — coreelixir v0.1.0</title>
+    <title>Introduction — coreelixir v0.1.0</title>
     <link rel="stylesheet" href="dist/html-elixir-P5GXSCHE.css" />
 
 
@@ -96,113 +96,32 @@ coreelixir
 </button>
 
 
-  <span translate="no">Myvariable</span> 
+  <span translate="no">Introduction</span> 
   <small class="app-vsn" translate="no">(coreelixir v0.1.0)</small>
 
 </h1>
 
 
   <section id="moduledoc">
-<p> elixir is a dynamic programming language, which means you dont explictly declare a variable or its type
- instead , the variable type is determined by whatever data it contains
- in elixir, assignment is called binding.
- when you initialize a variable with a value, the variable is bound to that value</p><p> each expression in elixir has a result.
- in elixir a variable always starts with a lowercase alpabet character or an underscore</p><p> As added syntactic sugar, variable names can end with the characters ? and !:
- valid_name?
- also_ok!</p><p> data in elixir is immutable, its content cant be changed.
- but variables can be rebound to different value</p><p> monthly_salary = 1000
- monthly_salary = 3000</p><p> rebinding doesnt mutate the existing memory location, it reserves new memory and reassigns the symbolic name to the new location</p><p> You should always be aware of the fact that data is immutable.
- Once a memory location is occupied with data, it can’t be modified until it’s released.
- But variables can be rebound, which makes them point to a differ- ent memory location.
- Thus variables are mutable, whereas the data they point to is immutable.</p><p> elxir is a garbage-collectable langauge, which means you dont have to manually release memory.
- when a variable goes out of scope, the corresponding memory is eligible for garbage collection.</p>
+<p>Elixir is built on top of erlang.
+fault-tolerant - system has to keep working even when unforseen bugs happen,
+high availability - enables distribution over multiple hardware
+scalability - handle any possible load
+Responsiveness - lengthy task shouldnt block rest of the system
+live update - realtime system version update without restarting servers</p><h1>Erlang concurrency</h1><p>Erlang virtual machine called BEAM , uses its own schedulers to distribute the
+execution of processes over available CPU cores thus parallelizing execution as much as possible</p><p>Erlang processes are completly isolated from each other, they share no memory and a crash
+of one process doesnt cause a crash of other process.This helps you isolate effect of an unexpected error</p><p>Sharing no memory , process communicate via asynchronous message.This meaans there are no complex synchronization mechanisms such as locks , mutex or semaphores</p><p>Typical erlang system are divided into a large number of concurrent process which cooperate together to provide complete service.</p><p>since process share no memory , each process collects its garbage individually.
+such collection are much shorter and dont block the entire system for long periods of time</p><h1>Elixir</h1><p>Elxir runs ontop of erlang BEAM and allows you to run cleaner, more compact code
+Elixir targets the erlang runtime. The result of compiling the elixir source code are BEAM compliant bytec code
+files that can run in a beam instance and can normally cooperate with pure erlang code
+you can use erlang libraries for elixir and vice versa.
+Elixir is semantically close to Erlang: many of its language constructs map directly to the Erlang counterparts.
+But Elixir provides some additional constructs that make it possible to radically reduce boilerplate and duplication.
+In addition, it tidies up some important parts of the standard libraries and provides some nice syntactic sugar and a uniform tool for creating and packaging systems</p><h1>interactive shell</h1><p>running iex starts an instance of the BEAM and then starts an interactive elixir shell inside it.</p><p>iex(1)&gt; 1 + 2
+3</p><p>everything in elixir is an expression that has a return value</p><p>You can type practically anything that constitutes valid Elixir code, including more complicated multiline expressions:</p>
   </section>
 
 
-  <section id="summary" class="details-list">
-    <h1 class="section-heading">
-      <a class="hover-link" href="#summary">
-        <i class="ri-link-m" aria-hidden="true"></i>
-        Summary
-      </a>
-    </h1>
-<div class="summary-functions summary">
-  <h2>
-    <a href="#functions">Functions</a>
-  </h2>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#nextfoldertest/0" translate="no">nextfoldertest()</a>
-
-      </div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#salario/0" translate="no">salario()</a>
-
-      </div>
-
-    </div>
-
-</div>
-
-  </section>
-
-
-  <section id="functions" class="details-list">
-    <h1 class="section-heading">
-      <a class="hover-link" href="#functions">
-        <i class="ri-link-m" aria-hidden="true"></i>
-Functions
-      </a>
-    </h1>
-    <div class="functions-list">
-<section class="detail" id="nextfoldertest/0">
-
-  <div class="detail-header">
-    <a href="#nextfoldertest/0" class="detail-link" title="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature" translate="no">nextfoldertest()</h1>
-
-
-  </div>
-
-  <section class="docstring">
-
-
-  </section>
-</section>
-<section class="detail" id="salario/0">
-
-  <div class="detail-header">
-    <a href="#salario/0" class="detail-link" title="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature" translate="no">salario()</h1>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@spec</span> salario() :: 1000</pre>
-
-      </div>
-
-
-  </section>
-</section>
-
-    </div>
-  </section>
 
       <footer class="footer">
         <p>

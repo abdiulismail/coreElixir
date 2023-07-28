@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.30.3">
     <meta name="project" content="coreelixir v0.1.0">
 
-    <title>Myvariable — coreelixir v0.1.0</title>
+    <title>ListChallenges — coreelixir v0.1.0</title>
     <link rel="stylesheet" href="dist/html-elixir-P5GXSCHE.css" />
 
 
@@ -96,27 +96,11 @@ coreelixir
 </button>
 
 
-  <span translate="no">Myvariable</span> 
+  <span translate="no">ListChallenges</span> 
   <small class="app-vsn" translate="no">(coreelixir v0.1.0)</small>
 
 </h1>
 
-
-  <section id="moduledoc">
-<p> elixir is a dynamic programming language, which means you dont explictly declare a variable or its type
- instead , the variable type is determined by whatever data it contains
- in elixir, assignment is called binding.
- when you initialize a variable with a value, the variable is bound to that value</p><p> each expression in elixir has a result.
- in elixir a variable always starts with a lowercase alpabet character or an underscore</p><p> As added syntactic sugar, variable names can end with the characters ? and !:
- valid_name?
- also_ok!</p><p> data in elixir is immutable, its content cant be changed.
- but variables can be rebound to different value</p><p> monthly_salary = 1000
- monthly_salary = 3000</p><p> rebinding doesnt mutate the existing memory location, it reserves new memory and reassigns the symbolic name to the new location</p><p> You should always be aware of the fact that data is immutable.
- Once a memory location is occupied with data, it can’t be modified until it’s released.
- But variables can be rebound, which makes them point to a differ- ent memory location.
- Thus variables are mutable, whereas the data they point to is immutable.</p><p> elxir is a garbage-collectable langauge, which means you dont have to manually release memory.
- when a variable goes out of scope, the corresponding memory is eligible for garbage collection.</p>
-  </section>
 
 
   <section id="summary" class="details-list">
@@ -133,7 +117,7 @@ coreelixir
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#nextfoldertest/0" translate="no">nextfoldertest()</a>
+        <a href="#checkempty/1" translate="no">checkempty(arg1)</a>
 
       </div>
 
@@ -141,7 +125,15 @@ coreelixir
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#salario/0" translate="no">salario()</a>
+        <a href="#checklength/1" translate="no">checklength(mylisy)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#reverse/2" translate="no">reverse(list, reversed_list)</a>
 
       </div>
 
@@ -160,14 +152,14 @@ Functions
       </a>
     </h1>
     <div class="functions-list">
-<section class="detail" id="nextfoldertest/0">
+<section class="detail" id="checkempty/1">
 
   <div class="detail-header">
-    <a href="#nextfoldertest/0" class="detail-link" title="Link to this function">
+    <a href="#checkempty/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">nextfoldertest()</h1>
+    <h1 class="signature" translate="no">checkempty(arg1)</h1>
 
 
   </div>
@@ -177,25 +169,36 @@ Functions
 
   </section>
 </section>
-<section class="detail" id="salario/0">
+<section class="detail" id="checklength/1">
 
   <div class="detail-header">
-    <a href="#salario/0" class="detail-link" title="Link to this function">
+    <a href="#checklength/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">salario()</h1>
+    <h1 class="signature" translate="no">checklength(mylisy)</h1>
 
 
   </div>
 
   <section class="docstring">
 
-      <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> salario() :: 1000</pre>
+  </section>
+</section>
+<section class="detail" id="reverse/2">
 
-      </div>
+  <div class="detail-header">
+    <a href="#reverse/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">reverse(list, reversed_list)</h1>
+
+
+  </div>
+
+  <section class="docstring">
 
 
   </section>

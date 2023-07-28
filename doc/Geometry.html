@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.30.3">
+    <meta name="project" content="coreelixir v0.1.0">
+
+    <title>Geometry — coreelixir v0.1.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-P5GXSCHE.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-NBND3S2D.js"></script>
+    <script src="dist/sidebar_items-9D274231.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/html-CGDDOCMI.js"></script>
+
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+    <div class="sidebar-projectDetails">
+      <a href="api-reference.html" class="sidebar-projectName" translate="no">
+coreelixir
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.1.0
+      </div>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+  <span translate="no">Geometry</span> 
+  <small class="app-vsn" translate="no">(coreelixir v0.1.0)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>  a function must always be a part of a module.
+  function name start with a lowercase letter.
+  as with variables , function name can end with the characters ? and !
+  the character ? is often used to indicate a function that returns either true or false.
+  placing ! at the end of the name indicates a function that may raise a runtime error</p><p>  functions can be defined using the def construct.
+  the defnition start with def construct, followed by function name, the args list and body enclosed in do..end block.</p><p>  the defmodule and def are not keywords but compilation constructs called macros.</p><p>  if a function has no arguments , you can omit parenthesis</p><p>  the return value of an function  is the value of its last expression.
+  there is no explicit return value in elixir
+  ofcourse you can always store the function result to a variable</p><p>  iex(2)&gt; area = Geometry.rectangle_area(3, 2)</p><p>  parenthesis are optional in elixir and you can omit them</p><p>  iex(4)&gt; Geometry.rectangle_area 3, 2</p><p>  Personally, I find that omitting parentheses makes the code ambiguous, so my advice is to always include them when calling a function</p><p>  if a function resides in the same module , you can omit the module prefix</p><p>  given that elxir is a functional langauge, you often need to combine functions, passing the result
+  of one function as the argument to the next one.
+  elixir comes with a built in operator |&gt; called the pipeline operator</p><p>  -5
+  |&gt; abs
+  |&gt; Integer.to_string
+  |&gt; IO.puts</p><p>  function arity
+  ===============
+  arity is a fancy name for the number of arguments a function recives.
+  a function is uniquely identified by its containing module, its name and its arity.
+  a function with arity of one /1 means it receives only one argument
+  a function with arity of two /2 means it receives two arguments and so on</p><p>  two functions with the same name , but different arities are two different functions.
+  Rectangle.area/1
+  Rectangle.area/2</p><p>  the name might be overloaded but the arities are different.</p><p>  it usually makes no sense for different function with the same name to have completly different implementations.
+  more commonly, a lower-arity function delegates to a higher-arity function, providing default arguments.</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="kd">defmodule</span><span class="w"> </span><span class="n">calculator</span><span class="w"> </span><span class="k" data-group-id="2609761780-1">do</span><span class="w">
+    </span><span class="kd">def</span><span class="w"> </span><span class="nf">sum</span><span class="p" data-group-id="2609761780-2">(</span><span class="n">a</span><span class="p" data-group-id="2609761780-2">)</span><span class="w"> </span><span class="k" data-group-id="2609761780-3">do</span><span class="w">
+      </span><span class="n">sum</span><span class="p" data-group-id="2609761780-4">(</span><span class="n">a</span><span class="p">,</span><span class="mi">0</span><span class="p" data-group-id="2609761780-4">)</span><span class="w">
+    </span><span class="k" data-group-id="2609761780-3">end</span><span class="w">
+
+    </span><span class="kd">def</span><span class="w"> </span><span class="nf">sum</span><span class="p" data-group-id="2609761780-5">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p" data-group-id="2609761780-5">)</span><span class="w"> </span><span class="k" data-group-id="2609761780-6">do</span><span class="w">
+      </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">
+    </span><span class="k" data-group-id="2609761780-6">end</span><span class="w">
+  </span><span class="k" data-group-id="2609761780-1">end</span></code></pre><p>  again a lower-arity function is implemented in terms of higher-arity one.
+  the pattern is so frequent that elixir allows  you to specify defualts for arguments using the \ operator followed by default value</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="kd">defmodule</span><span class="w"> </span><span class="n">calculator</span><span class="w"> </span><span class="k" data-group-id="4145051792-1">do</span><span class="w">
+        </span><span class="kd">def</span><span class="w"> </span><span class="nf">sum</span><span class="p" data-group-id="4145051792-2">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="w"> </span><span class="err">\</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="err">\</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4145051792-2">)</span><span class="w"> </span><span class="k" data-group-id="4145051792-3">do</span><span class="w">
+          </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">
+        </span><span class="k" data-group-id="4145051792-3">end</span><span class="w">
+    </span><span class="k" data-group-id="4145051792-1">end</span></code></pre><p>  function visibility
+  ===================
+  when you define a function using the def macro, the function is made public, it can be called by anyone else.
+  in elixir terminology its said the function is exported.</p><p>  you can use the defp macro to make the function private.
+  a private function can be used only inside the module its defined in</p><p>  imports and aliases
+  ==================
+  calling functions from another module can sometimes be cumbersome
+  because you need to reference the module name.
+  if your module often calls functions from another module, you can import that other module into your own
+  importing a module allows you to call its public functions without prefixing them with the module name</p><pre><code class="makeup elixir" translate="no"><span class="w">    </span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyModule</span><span class="w"> </span><span class="k" data-group-id="1992852537-1">do</span><span class="w">
+      </span><span class="kn">import</span><span class="w"> </span><span class="nc">IO</span><span class="w">
+
+      </span><span class="kd">def</span><span class="w"> </span><span class="nf">myfunction</span><span class="w"> </span><span class="k" data-group-id="1992852537-2">do</span><span class="w">
+        </span><span class="n">puts</span><span class="w"> </span><span class="s">&quot;calling imported function&quot;</span><span class="w">
+      </span><span class="k" data-group-id="1992852537-2">end</span><span class="w">
+    </span><span class="k" data-group-id="1992852537-1">end</span></code></pre><p>  Of course, you can import multiple modules. In fact, the standard library’s Kernel module is automatically imported into every module.
+  This is because Kernel contains functions that are often used, so automatic importing makes their usage easier.1.</p><p>  an alternative to import is alias , a construct that makes it possible to reference a module under a different name</p><pre><code class="makeup elixir" translate="no"><span class="w">    </span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyModule</span><span class="w"> </span><span class="k" data-group-id="7772459993-1">do</span><span class="w">
+      </span><span class="kn">alias</span><span class="w"> </span><span class="nc">IO</span><span class="p">,</span><span class="w"> </span><span class="ss">as</span><span class="p">:</span><span class="w"> </span><span class="nc">MyIO</span><span class="w">
+
+      </span><span class="kd">def</span><span class="w"> </span><span class="nf">myfunction</span><span class="w"> </span><span class="k" data-group-id="7772459993-2">do</span><span class="w">
+        </span><span class="nc">MyIO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="7772459993-3">(</span><span class="s">&quot;calling imported alias function&quot;</span><span class="p" data-group-id="7772459993-3">)</span><span class="w">
+      </span><span class="k" data-group-id="7772459993-2">end</span><span class="w">
+    </span><span class="k" data-group-id="7772459993-1">end</span></code></pre><p>alias can be useful if a module has a long name.</p><p>Personally, I tend to avoid aliases, because they increase ambiguity.
+But in some cases they can improve readability, especially if you call functions from a long-named module many times.</p><h1>module attributes</h1><p>modules attributes are of two types</p><ol><li><p>those used as compile time constants</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">Circle</span><span class="w"> </span><span class="k" data-group-id="3910959038-1">do</span><span class="w">
+   </span><span class="na">@pi</span><span class="w"> </span><span class="mf">3.14</span><span class="w">
+
+   </span><span class="kd">def</span><span class="w"> </span><span class="nf">area</span><span class="p" data-group-id="3910959038-2">(</span><span class="n">r</span><span class="p" data-group-id="3910959038-2">)</span><span class="w"> </span><span class="k" data-group-id="3910959038-3">do</span><span class="w">
+     </span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pi</span><span class="w">
+   </span><span class="k" data-group-id="3910959038-3">end</span><span class="w">
+ </span><span class="k" data-group-id="3910959038-1">end</span></code></pre><p> the @pi constant exist only during compilation of the module</p></li><li><p>those registered for runtime</p><p>an attribute can also be registered, which means that it will be stored in the generated binary
+and can be accessed in runtime.</p><p>elixir registers some attributes by default eg @moduledoc and @doc to provide documentation for modules and functions</p></li></ol><h1>Type specification</h1><p>typespec specification often called typespecs are another important feature based on attributes.
+this feature allows you to provide type information for your functions which can be later analyzed with a static analysis tool called dialyzer</p><pre><code class="makeup elixir" translate="no"><span class="w">    </span><span class="na">@spec</span><span class="w"> </span><span class="n">rectangle_area</span><span class="p" data-group-id="5272187361-1">(</span><span class="n">number</span><span class="p">,</span><span class="n">number</span><span class="p" data-group-id="5272187361-1">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">number</span><span class="w">
+    </span><span class="kd">def</span><span class="w"> </span><span class="nf">rectangle_area</span><span class="p" data-group-id="5272187361-2">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p" data-group-id="5272187361-2">)</span><span class="w"> </span><span class="k" data-group-id="5272187361-3">do</span><span class="w">
+      </span><span class="n">sum</span><span class="p" data-group-id="5272187361-4">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p" data-group-id="5272187361-4">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="k" data-group-id="5272187361-3">end</span></code></pre><p>here you see the @spec attribute to indicate that both functions accept and return a number</p><p>typespec provides a way of compensating for the lack of a static type system.
+typespec allows you to document your code better</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        Summary
+      </a>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#rectangle_area/2" translate="no">rectangle_area(a, b)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#square_area/1" translate="no">square_area(a)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+Functions
+      </a>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="rectangle_area/2">
+
+  <div class="detail-header">
+    <a href="#rectangle_area/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">rectangle_area(a, b)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="square_area/1">
+
+  <div class="detail-header">
+    <a href="#square_area/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">square_area(a)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+      <footer class="footer">
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="coreelixir.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.30.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

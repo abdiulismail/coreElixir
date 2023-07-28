@@ -7,13 +7,13 @@
     <meta name="generator" content="ExDoc v0.30.3">
     <meta name="project" content="coreelixir v0.1.0">
 
-    <title>Coreelixir — coreelixir v0.1.0</title>
+    <title>MyTuple — coreelixir v0.1.0</title>
     <link rel="stylesheet" href="dist/html-elixir-P5GXSCHE.css" />
 
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-NBND3S2D.js"></script>
-    <script src="dist/sidebar_items-F7D33CDB.js"></script>
+    <script src="dist/sidebar_items-9D274231.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -96,14 +96,29 @@ coreelixir
 </button>
 
 
-  <span translate="no">Coreelixir</span> 
+  <span translate="no">MyTuple</span> 
   <small class="app-vsn" translate="no">(coreelixir v0.1.0)</small>
 
 </h1>
 
 
   <section id="moduledoc">
-<p>Documentation for <a href="Coreelixir.html#content"><code class="inline">Coreelixir</code></a>.</p>
+<p>tuples are records that are used to group small number of fixed elements
+tuples are denoted using curly braces
+tuples may contain elements of different type</p><p>iex(1)&gt; person = {&quot;Bob&quot;, 25}
+{&quot;Bob&quot;, 25}</p><h1>extract from a tuple</h1><p>to extract an element from a tuple , you can use the kernel.elem/2 function , which accepts a tuple and zero based index of the element.
+recall Kernel module is auto-imported , so you can call elem instead of kernel.elem</p><p>iex(2)&gt; age = elem(persion, 1)
+25</p><h1>modify a tuple</h1><p>to modify the element of the tuple, you can use the kernel.put_elem/3 function, which accepts a tuple,
+a zero-based inde and the new value of the field in the given position</p><p>iex(3)&gt; put_elem(person, 1, 26)
+{&quot;Bob&quot;, 26}</p><p>the function put_elem doesnt modify the tuple. it returns the new version, keeping the old one intact.
+recall that data in elixir is immutable, and you cant do an im-memory modification of a value.</p><p>so , how can you use the put_elem function ?
+you need to store its result to another variable</p><p> iex(5)&gt; older_person = put_elem(person, 1, 26)
+ {&quot;Bob&quot;, 26}</p><p>Recall that variables can be rebound, so you can also do the following:</p><p>iex(7)&gt; person = put_elem(person, 1, 26)
+{&quot;Bob&quot;, 26}</p><p>By doing this, you have effectively rebound the person variable to the new memory location.
+The old location isn’t referenced by any other variable, so it’s eligible for garbage collection.</p><p>you can check the number of elements in a list using:application:</p><p>tuple_size(name_of_tuple)</p><p>iex(6)&gt; tuple_size(old_person)
+2</p><p>tuples are most appropriate to group a small, fixed number of elements together.
+when you need a dynamically sized collection, you can use lists</p><p>tuples are good for reading data while lists are better for traversals.
+tuples are typically used either when a function has multiple return values or for error handling</p><p>File.read/1</p><p>returns {:ok, content} if reading the given file is successful or {:error,reason} when not successful</p>
   </section>
 
 
@@ -121,11 +136,9 @@ coreelixir
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#hello/0" translate="no">hello()</a>
+        <a href="#mytuple/0" translate="no">mytuple()</a>
 
       </div>
-
-        <div class="summary-synopsis"><p>Hello world.</p></div>
 
     </div>
 
@@ -142,28 +155,21 @@ Functions
       </a>
     </h1>
     <div class="functions-list">
-<section class="detail" id="hello/0">
+<section class="detail" id="mytuple/0">
 
   <div class="detail-header">
-    <a href="#hello/0" class="detail-link" title="Link to this function">
+    <a href="#mytuple/0" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">hello()</h1>
+    <h1 class="signature" translate="no">mytuple()</h1>
 
 
   </div>
 
   <section class="docstring">
 
-<p>Hello world.</p><h2 id="hello/0-examples" class="section-heading">
-  <a href="#hello/0-examples">
-    <i class="ri-link-m" aria-hidden="true"></i>
-    Examples
-  </a>
-</h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Coreelixir</span><span class="o">.</span><span class="n">hello</span><span class="p" data-group-id="6656300699-1">(</span><span class="p" data-group-id="6656300699-1">)</span><span class="w">
-</span><span class="ss">:world</span></code></pre>
+
   </section>
 </section>
 

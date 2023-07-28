@@ -1,8 +1,16 @@
 404.html
-Coreelixir.html
+Geometry.html
+Introduction.html
+ListChallenges.html
+MyList.html
+MyModules.html
+MyTuple.html
+Myatoms.html
+Mymath.MathUtils.html
 Mymath.html
 Mynumbes.html
 Myvariable.html
+TupleChallenges.html
 api-reference.html
 dist/handlebars.runtime-NWIB6V2M.js
 dist/handlebars.templates-NBND3S2D.js
@@ -31,7 +39,7 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_data-8FB4DD41.js
-dist/sidebar_items-F7D33CDB.js
+dist/search_data-22FE6AA7.js
+dist/sidebar_items-9D274231.js
 index.html
 search.html

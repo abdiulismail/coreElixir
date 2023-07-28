@@ -90,7 +90,6 @@ defmodule MyList do
 
   """
 
-
   # ================================================================================
   def mylist do
     prime_numbers = [1, 2, 3, 5, 7]
@@ -105,7 +104,7 @@ defmodule MyList do
     Enum.at(prime_numbers, 4)
   end
 
-   # ================================================================================
+  # ================================================================================
 
   # you can check whether a list contains a particular element with the help of the in operator
   def check do
@@ -113,7 +112,7 @@ defmodule MyList do
     5 in prime_numbers
   end
 
-   # ================================================================================
+  # ================================================================================
 
   # replace element at certain position
   def reple do
@@ -338,8 +337,7 @@ defmodule MyList do
 
   # ================================================================================
   # keyreplace(list,key,position,new_tuple) - receives a list of tuples and if the identified element by the key at position exists, it is replaced with new_tuple
-  def keyreplace(list,key,pos,new_tuple) do
-    List.keyreplace(list,key,pos,new_tuple)
+  def keyreplace(list, key, pos, new_tuple) do
+    List.keyreplace(list, key, pos, new_tuple)
   end
-
 end

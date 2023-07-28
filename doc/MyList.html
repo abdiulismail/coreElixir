@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.30.3">
+    <meta name="project" content="coreelixir v0.1.0">
+
+    <title>MyList — coreelixir v0.1.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-P5GXSCHE.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-NBND3S2D.js"></script>
+    <script src="dist/sidebar_items-9D274231.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/html-CGDDOCMI.js"></script>
+
+
+  </head>
+  <body data-type="modules" class="page-module">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+    <div class="sidebar-projectDetails">
+      <a href="api-reference.html" class="sidebar-projectName" translate="no">
+coreelixir
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.1.0
+      </div>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+  <span translate="no">MyList</span> 
+  <small class="app-vsn" translate="no">(coreelixir v0.1.0)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>  lists in erlang are  used to manage dynamic, variable-sized collection of data.</p><pre><code class="makeup elixir" translate="no"><span class="w">  </span><span class="gp unselectable">iex&gt; </span><span class="n">prime_numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0671622595-1">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p" data-group-id="0671622595-1">]</span><span class="w">
+  </span><span class="p" data-group-id="0671622595-2">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p" data-group-id="0671622595-2">]</span></code></pre><p>  to do something with a list , you have to traverse it.
+  therefore most of the operation on list have an 0(n) complexity,
+  including the Kernel.length/1 function which iterates through the entire list to calculate its length</p><pre><code class="makeup elixir" translate="no"><span class="w">    </span><span class="gp unselectable">iex&gt; </span><span class="n">length</span><span class="p" data-group-id="9634001065-1">(</span><span class="n">prime_numbers</span><span class="p" data-group-id="9634001065-1">)</span></code></pre><p>  to get an element from a list , you can use the Enum.at/2 function.
+  Enum.at is again an 0(n) operation, it iterates from the beginning of the list to the desired element.
+  lists are never a good fit when direct access is called for. for those purpose , either tuples, maps or
+  higher level data structure is appropriate</p><p>  check for element?
+  ===================
+  you can check whether a list contains a particular element with the help of the in operator</p><pre><code class="makeup elixir" translate="no"><span class="w">   </span><span class="mi">5</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">prime_numbers</span></code></pre><p>  replace an element
+  ====================
+  to maniplulate a list, you can use functions from the List module. For example,
+  List.replace_at/3 modifies the element at a certain position</p><pre><code class="makeup elixir" translate="no"><span class="w">    </span><span class="n">prime_numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8893666462-1">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="8893666462-1">]</span><span class="w">
+    </span><span class="nc">List</span><span class="o">.</span><span class="n">replace_at</span><span class="p" data-group-id="8893666462-2">(</span><span class="n">prime_numbers</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="8893666462-2">)</span></code></pre><p>  like with tuples, the modifier doesnt mutate the data but returns the modified version of it, which you need to store in another variable
+  or you can rebound to the same variable</p><p>  insert a new elment
+  ====================
+  you can insert a new element at the specified position with the List.insert_at function</p><pre><code class="makeup elixir" translate="no"><span class="w">        </span><span class="n">prime_numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6711382788-1">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="6711382788-1">]</span><span class="w">
+        </span><span class="nc">List</span><span class="o">.</span><span class="n">insert_at</span><span class="p" data-group-id="6711382788-2">(</span><span class="n">prime_numbers</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="6711382788-2">)</span></code></pre><p>  to append to the end , you can use a negative value for the insertion position</p><pre><code class="makeup elixir" translate="no"><span class="w">        </span><span class="n">prime_numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8280189612-1">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="8280189612-1">]</span><span class="w">
+        </span><span class="nc">List</span><span class="o">.</span><span class="n">insert_at</span><span class="p" data-group-id="8280189612-2">(</span><span class="n">prime_numbers</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p" data-group-id="8280189612-2">)</span></code></pre><p>  like most list operation, modifying  a random element has a complexity of 0(n).
+  in particular appending at the end of the list is expensive as it takes n steps, n being the length of the list</p><p>  concatenate two list
+  ========================
+  you can join two list together using ++ operator
+  [1,2,3,4] + [5,6,7]</p><p>  again the complexity is 0(n) since its adding at the end of list to another.
+  you should avoid adding elements to the end of a list.
+  list are most efficient when new elements are pushed to the top, or popped from it</p><p>  recursive list
+  ===============
+  an alternative way to look at list is to think of them as recursive structures
+  a list can be represented by a pair(head,tail) , where head is the first element of the list
+  and tail points to the (head,tail) pair of the remaining elements.
+  in elixir there is a special syntax to support recursive list defnition</p><p>  a_list = [head | tail]</p><p>  head can be any data type, where tail is itself a list.if tail is empty, it indicates the end of the entire list.</p><pre><code class="makeup elixir" translate="no"><span class="w">      </span><span class="gp unselectable">iex(1)&gt; </span><span class="p" data-group-id="6337029304-1">[</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="6337029304-2">[</span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="6337029304-3">[</span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="6337029304-4">[</span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="6337029304-5">[</span><span class="p" data-group-id="6337029304-5">]</span><span class="p" data-group-id="6337029304-4">]</span><span class="p" data-group-id="6337029304-3">]</span><span class="p" data-group-id="6337029304-2">]</span><span class="p" data-group-id="6337029304-1">]</span></code></pre><p>  to get to the head of the list, you can use hd function. the tail can be obtained by calling the tl function</p><pre><code class="makeup elixir" translate="no"><span class="w">      </span><span class="gp unselectable">iex(1)&gt; </span><span class="n">hd</span><span class="p" data-group-id="1546651044-1">(</span><span class="p" data-group-id="1546651044-2">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="1546651044-2">]</span><span class="p" data-group-id="1546651044-1">)</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+
+      </span><span class="gp unselectable">iex(2)&gt; </span><span class="n">tl</span><span class="p" data-group-id="1546651044-3">(</span><span class="p" data-group-id="1546651044-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="1546651044-4">]</span><span class="p" data-group-id="1546651044-3">)</span><span class="w">
+      </span><span class="p" data-group-id="1546651044-5">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="1546651044-5">]</span></code></pre><p>  both operations are 0(1), because they amount to reading one or the other value from (head,tail) pair</p><p>  Knowing the recursive nature of the list, it’s simple and efficient to push a new element to the top of the list:</p><pre><code class="makeup elixir" translate="no"><span class="w">        </span><span class="gp unselectable">iex(1)&gt; </span><span class="n">a_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0316383001-1">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="ss">:value</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="0316383001-1">]</span><span class="w">
+        </span><span class="p" data-group-id="0316383001-2">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="ss">:value</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="0316383001-2">]</span><span class="w">
+
+        </span><span class="gp unselectable">iex(2)&gt; </span><span class="n">new_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0316383001-3">[</span><span class="ss">:new_element</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">a_list</span><span class="p" data-group-id="0316383001-3">]</span><span class="w">
+        </span><span class="p" data-group-id="0316383001-4">[</span><span class="ss">:new_element</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="ss">:value</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="0316383001-4">]</span></code></pre><p>  so many functions to work with in lists are found in Enum module</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        Summary
+      </a>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#check/0" translate="no">check()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#conc/0" translate="no">conc()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#dele/1" translate="no">dele(lst)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#deleat/1" translate="no">deleat(lst)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#dupli/1" translate="no">dupli(list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#first/1" translate="no">first(list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#flaten2/2" translate="no">flaten2(list, tail)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#flaten/1" translate="no">flaten(list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#getele/0" translate="no">getele()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#impropa/1" translate="no">impropa(list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#inser/0" translate="no">inser()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#insert/0" translate="no">insert()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#keyd/3" translate="no">keyd(list, x, no)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#keyfnd/3" translate="no">keyfnd(list, key, pos)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#keyfnd!/3" translate="no">keyfnd!(list, key, pos)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#keymembr/3" translate="no">keymembr(list, key, pos)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#keyreplace/4" translate="no">keyreplace(list, key, pos, new_tuple)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mylist/0" translate="no">mylist()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#reple/0" translate="no">reple()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transfrm/1" translate="no">transfrm(list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#traverse/1" translate="no">traverse(list)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+Functions
+      </a>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="check/0">
+
+  <div class="detail-header">
+    <a href="#check/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">check()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="conc/0">
+
+  <div class="detail-header">
+    <a href="#conc/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">conc()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="dele/1">
+
+  <div class="detail-header">
+    <a href="#dele/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">dele(lst)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="deleat/1">
+
+  <div class="detail-header">
+    <a href="#deleat/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">deleat(lst)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="dupli/1">
+
+  <div class="detail-header">
+    <a href="#dupli/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">dupli(list)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="first/1">
+
+  <div class="detail-header">
+    <a href="#first/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">first(list)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="flaten2/2">
+
+  <div class="detail-header">
+    <a href="#flaten2/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">flaten2(list, tail)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="flaten/1">
+
+  <div class="detail-header">
+    <a href="#flaten/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">flaten(list)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="getele/0">
+
+  <div class="detail-header">
+    <a href="#getele/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">getele()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="impropa/1">
+
+  <div class="detail-header">
+    <a href="#impropa/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">impropa(list)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="inser/0">
+
+  <div class="detail-header">
+    <a href="#inser/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">inser()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="insert/0">
+
+  <div class="detail-header">
+    <a href="#insert/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">insert()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="keyd/3">
+
+  <div class="detail-header">
+    <a href="#keyd/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">keyd(list, x, no)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="keyfnd/3">
+
+  <div class="detail-header">
+    <a href="#keyfnd/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">keyfnd(list, key, pos)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="keyfnd!/3">
+
+  <div class="detail-header">
+    <a href="#keyfnd!/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">keyfnd!(list, key, pos)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="keymembr/3">
+
+  <div class="detail-header">
+    <a href="#keymembr/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">keymembr(list, key, pos)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="keyreplace/4">
+
+  <div class="detail-header">
+    <a href="#keyreplace/4" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">keyreplace(list, key, pos, new_tuple)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="mylist/0">
+
+  <div class="detail-header">
+    <a href="#mylist/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">mylist()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="reple/0">
+
+  <div class="detail-header">
+    <a href="#reple/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">reple()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="transfrm/1">
+
+  <div class="detail-header">
+    <a href="#transfrm/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">transfrm(list)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="traverse/1">
+
+  <div class="detail-header">
+    <a href="#traverse/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">traverse(list)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+      <footer class="footer">
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="coreelixir.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.30.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

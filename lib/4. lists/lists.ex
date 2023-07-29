@@ -371,6 +371,131 @@ defmodule MyList do
   # keytake(list,key,position)
   # receives a list of tuples and returns the first tuple where the element at position in the tuple matches the given
   # key, as well as the list without found tuple
-  
+  # if such tuple is not founf, nil will be returned
+  def keytake(list,key,pos) do
+    List.keytake(list,key,pos)
+    # iex(8)> List.keytake(list,:a,0)
+    # {{:a, 1}, [b: 2]}
+    # iex(9)> List.keytake(list,2,1)
+    # {{:b, 2}, [a: 1]}
+    # iex(10)> List.keytake(list,:c,0)
+    # nil
+  end
+
+  # ================================================================================
+  # last(list,default \\ nil)
+  # returns the last element in list or default if list is empty
+  def last(list) do
+    List.last(list)
+    # List.last([])
+    # nil
+    # List.last([], 1)
+    # 1
+    # List.last([1])
+    # 1
+    # List.last([1, 2, 3])
+    # 3
+  end
+
+  # ================================================================================
+  # pop_at(list,index,default \\ nil)
+  # returns and removes the value at the specified index in the list
+  # negative indices indicate an offset from the end of the list.
+  # if index is out of bounds, the original list is returned
+  def popat(list,index) do
+    List.pop_at(list,index)
+    # iex(15)> List.pop_at([1,2,3],0)
+    # {1, [2, 3]}
+    # iex(16)> List.pop_at([1,2,3],5)
+    # {nil, [1, 2, 3]}
+    # iex(17)> List.pop_at([1,2,3],5,10)
+    # {10, [1, 2, 3]}
+    # iex(18)> List.pop_at([1,2,3],-1)
+    # {3, [1, 2]}
+  end
+
+  # ================================================================================
+  # replace_at(list, index, value)
+  # returns a list with a replaced value at the specified index
+  def replaceat(list,index,value) do
+    List.replace_at(list,index,value)
+    # iex(19)> List.replace_at([1,2,3],0,0)
+    # [0, 2, 3]
+    # iex(20)> List.replace_at([1,2,3],10,0)
+    # [1, 2, 3]
+    # iex(21)> List.replace_at([1,2,3],-1,0)
+    # [1, 2, 0]
+    # iex(22)>
+  end
+
+
+  # ================================================================================
+  # starts_with?(list, prefix)
+  # returns true if list starts with the given prefix list; otherwise returns false
+  # if prefix is an empty list, it returns true
+  def startswith(list,prefix) do
+    List.starts_with?(list,prefix)
+    # iex(22)> List.starts_with?([1,2,3],[1,2])
+    # true
+    # iex(23)> List.starts_with?([1,2],[1,2,3])
+    # false
+    # iex(24)> List.starts_with?([1,2],[])
+    # true
+    # iex(25)> List.starts_with?([],[:alpha])
+    # false
+  end
+
+
+  # ================================================================================
+  # to_atom(charlist)
+  # converts a charlist to an atom
+  def toatom(charlist) do
+    List.to_atom(charlist)
+    # iex(28)> List.to_atom(~c"Elixir")
+    # Elixir
+    # iex(29)> List.to_atom(~c" Elixir")
+    # :" Elixir"
+    # iex(30)>
+  end
+
+  # ================================================================================
+  #to_charlist(list) - converts a list representing unicde or string into charlist
+  def tocharlist(list) do
+    List.to_charlist(list)
+    # iex(31)> List.to_charlist(["sbc"])
+    # ~c"sbc"
+    # iex(32)> List.to_charlist([0x0061])
+    # ~c"a"
+    # iex(33)>
+  end
+
+  # ================================================================================
+  # to_float(charlist)
+  # returns the float whose text representation is charlist
+  def tofloat(charlist) do
+    List.to_float(charlist)
+    # iex(33)> List.to_float(~c"2.2017764e+0")
+    # 2.2017764
+  end
+
+
+  # ================================================================================
+  # to_integer(charlist)
+  # returns an integer whose text representation is charlist
+  def tointeger(charlist) do
+    List.to_integer(charlist)
+    # iex(34)> List.to_integer(~c"123")
+    # 123
+  end
+
+  # ================================================================================
+  # to_integer(charlist, base) - returns an integer whose text representation is charlist in base base
+  def tointeger(charlist, base) do
+    List.to_integer(charlist,base)
+    # iex(34)> List.to_integer(~c"3FF", 16)
+    # 1023
+  end
+
+
 
 end

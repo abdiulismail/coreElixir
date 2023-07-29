@@ -355,4 +355,22 @@ defmodule MyList do
   end
 
   # ================================================================================
+  # keystore(list,key,position,new_tuple)
+  # receives a list of tuples and replaces the element identified by key at position with new_tuple
+  # if the element does not exist, it is added to the end of the list
+  def keystore(list,key,pos,new_tuple) do
+    List.keystore(list,key,pos,new_tuple)
+        # iex(5)> list = [a: 1, b: 2]
+        # [a: 1, b: 2]
+        # iex(6)> List.keystore(list,:a,0,{:a,3})
+        # [a: 3, b: 2]
+        # iex(7)>
+  end
+
+  # ================================================================================
+  # keytake(list,key,position)
+  # receives a list of tuples and returns the first tuple where the element at position in the tuple matches the given
+  # key, as well as the list without found tuple
+  
+
 end

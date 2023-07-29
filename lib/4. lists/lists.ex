@@ -340,4 +340,19 @@ defmodule MyList do
   def keyreplace(list, key, pos, new_tuple) do
     List.keyreplace(list, key, pos, new_tuple)
   end
+
+  # ================================================================================
+  # keysort(list, position, sorter \\ :asc)
+  # receives a list of tuples and sorts the elements at position of the tuples
+  # to sort in desc use :desc as the last argument
+  def keysort(list, pos) do
+    List.keysort(list, pos)
+    # iex(2)> list1 = [a: 5,b: 1,c: 3]
+    # [a: 5, b: 1, c: 3]
+    # iex(3)> List.keysort(list1,1)
+    # [b: 1, c: 3, a: 5]
+    # iex(4)>
+  end
+
+  # ================================================================================
 end

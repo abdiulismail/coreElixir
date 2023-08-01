@@ -496,6 +496,64 @@ defmodule MyList do
     # 1023
   end
 
+  # to_string(list)
+  # converts a list of integers representing code points or string into a string
+  # this function expecs a list of integers representing unicode points
+  # if you have a list of bytes, you must instead use the :binary module
+  def tostring(list) do
+    List.to_string(list)
+    # iex(35)> List.to_string([0x0061, "bc"])
+    # "abc"
+    # iex(36)> List.to_string([0x0064, "ee", [~c"p"]])
+    # "deep"
+  end
 
+  #to_tuple(list)
+  # converts a list to a tuple
+  def totuple(list) do
+    List.to_tuple(list)
+    # iex(41)> List.to_tuple([:share, [:elixir, 163]])
+    # {:share, [:elixir, 163]}
+  end
+
+  # update_at(list,index,fun)
+  # returns a list with an updated value at the specified index
+  # negative indices indicate an offset from the end of the list
+  # if index is out of bounds, the original list is returned
+  def updateat(list,index,fun) do
+    List.update_at(list,index,fun)
+    # iex(42)> List.update_at([1, 2, 3], 0, &(&1 + 10))
+    # [11, 2, 3]
+    # iex(43)> List.update_at([1, 2, 3], 10, &(&1 + 10))
+    # [1, 2, 3]
+    # iex(44)> List.update_at([1, 2, 3], -1, &(&1 + 10))
+    # [1, 2, 13]
+    # iex(45)> List.update_at([1, 2, 3], -10, &(&1 + 10))
+    # [1, 2, 3]
+  end
+
+  # wrap(term)
+  # wraps term in alist if this is not a list
+  # if term is already a list, it returns the list,if term is nil, it returns an empty list
+  def wrap(term) do
+    List.wrap(term)
+    # iex(46)> List.wrap("hello")
+    # ["hello"]
+    # iex(47)> List.wrap([1, 2, 3])
+    # [1, 2, 3]
+    # iex(48)> List.wrap(nil)
+    # []
+  end
+
+  # zip(list_of_list)
+  # zips corresponding elements from each list in list_of_list
+  # the zipping finishes as soon as any list terminates
+  def zip(list_of_list) do
+    List.zip(list_of_list)
+    # iex(49)> List.zip([[1, 2], [3, 4], [5, 6]])
+    # [{1, 3, 5}, {2, 4, 6}]
+    # iex(50)> List.zip([[1, 2], [3], [5, 6]])
+    # [{1, 3, 5}]
+  end
 
 end

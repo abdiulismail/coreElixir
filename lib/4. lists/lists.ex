@@ -98,7 +98,7 @@ defmodule MyList do
 
   # ================================================================================
 
-  # to get an element from a list , you can use the Enum.at/2 function
+  # to get an element from a list using its index, you can use the Enum.at/2 function
   def getele do
     prime_numbers = [1, 2, 3, 5, 7]
     Enum.at(prime_numbers, 4)
@@ -358,13 +358,13 @@ defmodule MyList do
   # keystore(list,key,position,new_tuple)
   # receives a list of tuples and replaces the element identified by key at position with new_tuple
   # if the element does not exist, it is added to the end of the list
-  def keystore(list,key,pos,new_tuple) do
-    List.keystore(list,key,pos,new_tuple)
-        # iex(5)> list = [a: 1, b: 2]
-        # [a: 1, b: 2]
-        # iex(6)> List.keystore(list,:a,0,{:a,3})
-        # [a: 3, b: 2]
-        # iex(7)>
+  def keystore(list, key, pos, new_tuple) do
+    List.keystore(list, key, pos, new_tuple)
+    # iex(5)> list = [a: 1, b: 2]
+    # [a: 1, b: 2]
+    # iex(6)> List.keystore(list,:a,0,{:a,3})
+    # [a: 3, b: 2]
+    # iex(7)>
   end
 
   # ================================================================================
@@ -372,8 +372,8 @@ defmodule MyList do
   # receives a list of tuples and returns the first tuple where the element at position in the tuple matches the given
   # key, as well as the list without found tuple
   # if such tuple is not founf, nil will be returned
-  def keytake(list,key,pos) do
-    List.keytake(list,key,pos)
+  def keytake(list, key, pos) do
+    List.keytake(list, key, pos)
     # iex(8)> List.keytake(list,:a,0)
     # {{:a, 1}, [b: 2]}
     # iex(9)> List.keytake(list,2,1)
@@ -402,8 +402,8 @@ defmodule MyList do
   # returns and removes the value at the specified index in the list
   # negative indices indicate an offset from the end of the list.
   # if index is out of bounds, the original list is returned
-  def popat(list,index) do
-    List.pop_at(list,index)
+  def popat(list, index) do
+    List.pop_at(list, index)
     # iex(15)> List.pop_at([1,2,3],0)
     # {1, [2, 3]}
     # iex(16)> List.pop_at([1,2,3],5)
@@ -417,8 +417,8 @@ defmodule MyList do
   # ================================================================================
   # replace_at(list, index, value)
   # returns a list with a replaced value at the specified index
-  def replaceat(list,index,value) do
-    List.replace_at(list,index,value)
+  def replaceat(list, index, value) do
+    List.replace_at(list, index, value)
     # iex(19)> List.replace_at([1,2,3],0,0)
     # [0, 2, 3]
     # iex(20)> List.replace_at([1,2,3],10,0)
@@ -428,13 +428,12 @@ defmodule MyList do
     # iex(22)>
   end
 
-
   # ================================================================================
   # starts_with?(list, prefix)
   # returns true if list starts with the given prefix list; otherwise returns false
   # if prefix is an empty list, it returns true
-  def startswith(list,prefix) do
-    List.starts_with?(list,prefix)
+  def startswith(list, prefix) do
+    List.starts_with?(list, prefix)
     # iex(22)> List.starts_with?([1,2,3],[1,2])
     # true
     # iex(23)> List.starts_with?([1,2],[1,2,3])
@@ -444,7 +443,6 @@ defmodule MyList do
     # iex(25)> List.starts_with?([],[:alpha])
     # false
   end
-
 
   # ================================================================================
   # to_atom(charlist)
@@ -459,7 +457,7 @@ defmodule MyList do
   end
 
   # ================================================================================
-  #to_charlist(list) - converts a list representing unicde or string into charlist
+  # to_charlist(list) - converts a list representing unicde or string into charlist
   def tocharlist(list) do
     List.to_charlist(list)
     # iex(31)> List.to_charlist(["sbc"])
@@ -478,7 +476,6 @@ defmodule MyList do
     # 2.2017764
   end
 
-
   # ================================================================================
   # to_integer(charlist)
   # returns an integer whose text representation is charlist
@@ -491,7 +488,7 @@ defmodule MyList do
   # ================================================================================
   # to_integer(charlist, base) - returns an integer whose text representation is charlist in base base
   def tointeger(charlist, base) do
-    List.to_integer(charlist,base)
+    List.to_integer(charlist, base)
     # iex(34)> List.to_integer(~c"3FF", 16)
     # 1023
   end
@@ -508,7 +505,7 @@ defmodule MyList do
     # "deep"
   end
 
-  #to_tuple(list)
+  # to_tuple(list)
   # converts a list to a tuple
   def totuple(list) do
     List.to_tuple(list)
@@ -520,8 +517,8 @@ defmodule MyList do
   # returns a list with an updated value at the specified index
   # negative indices indicate an offset from the end of the list
   # if index is out of bounds, the original list is returned
-  def updateat(list,index,fun) do
-    List.update_at(list,index,fun)
+  def updateat(list, index, fun) do
+    List.update_at(list, index, fun)
     # iex(42)> List.update_at([1, 2, 3], 0, &(&1 + 10))
     # [11, 2, 3]
     # iex(43)> List.update_at([1, 2, 3], 10, &(&1 + 10))
@@ -533,7 +530,7 @@ defmodule MyList do
   end
 
   # wrap(term)
-  # wraps term in alist if this is not a list
+  # wraps term in a list if this is not a list
   # if term is already a list, it returns the list,if term is nil, it returns an empty list
   def wrap(term) do
     List.wrap(term)
@@ -555,5 +552,4 @@ defmodule MyList do
     # iex(50)> List.zip([[1, 2], [3], [5, 6]])
     # [{1, 3, 5}]
   end
-
 end

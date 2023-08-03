@@ -533,7 +533,93 @@ defmodule MyMap do
     # %{a: 1, b: 2}
   end
 
-  
+  # split(map,key)
+  # take all entries corresponding to the given keys in map and extract them into a separate map
+  # returns a tuple with the new map and the old map with removed keys
+  # keys for which there are no entries in map are ignored
+  def split(map,keys) do
+    Map.split(map,keys)
+
+    # Map.split(%{a: 1, b: 2, c: 3}, [:a, :c, :e])
+    # {%{a: 1, c: 3}, %{b: 2}}
+  end
+
+  # split_with(map,fun)
+  # splits the map into two maps according to the given function fun
+  # fun recieves each {key,value} pair in the map as its only arguments.
+  # returns a tuple with the first map containing  all the elements in map for which applying fun returned a truthy value,
+  # and a second map with all the elements for which applying fun returned a falsy value(false, or nil)
+  def split_with(map) do
+    Map.split_with(map, fn {_k,v} -> rem(v,2) end)
+
+    # Map.split_with(%{a: 1, b: 2, c: 3, d: 4}, fn {_k, v} -> rem(v, 2) == 0 end)
+    # {%{b: 2, d: 4}, %{a: 1, c: 3}}
+
+    # Map.split_with(%{a: 1, b: -2, c: 1, d: -3}, fn {k, _v} -> k in [:b, :d] end)
+    # {%{b: -2, d: -3}, %{a: 1, c: 1}}
+
+    # Map.split_with(%{a: 1, b: -2, c: 1, d: -3}, fn {_k, v} -> v > 50 end)
+    # {%{}, %{a: 1, b: -2, c: 1, d: -3}}
+
+    # Map.split_with(%{}, fn {_k, v} -> v > 50 end)
+    # {%{}, %{}}
+  end
+
+  # take(map,keys)
+  # returns a new map with all the key-value pairs in map where the key is in keys
+  # if keys contain keys that are not in map, they are simply ignored
+  def take(map,keys) do
+    Map.take(map,keys)
+
+    # Map.take(%{a: 1, b: 2, c: 3}, [:a, :c, :e])
+    # %{a: 1, c: 3}
+  end
+
+
+  # to_list(map)
+  # converts map to a list
+  # each key-value pair in the map is converted to a two-element tuple {key,value} in the resulting list
+  def to_list(map) do
+    Map.to_list(map)
+
+    # Map.to_list(%{a: 1})
+    # [a: 1]
+    # Map.to_list(%{1 => 2})
+    # [{1, 2}]
+  end
+
+  # update(map,key,default,fun)
+  # updates the key in map with the given function
+  # if key is present in map then existing value is passed to fun and its results is used as the updated value of key.
+  # if key is not present in map, default is inserted as the value of key.
+  # the default value will not be passed through the update function
+  def update(map,key) do
+    Map.update(map,key,13, fn v -> v * 2 end)
+
+    # Map.update(%{a: 1}, :a, 13, fn existing_value -> existing_value * 2 end)
+    # %{a: 2}
+    # Map.update(%{a: 1}, :b, 11, fn existing_value -> existing_value * 2 end)
+    # %{a: 1, b: 11}
+  end
+
+  # update!(map,key,fun)
+  # updates key with the given function
+  # if key is present in map then the existing value is passed to fun and its result is used as the updated value of key.
+  # if key is not present in map, a KeyError exception is raised
+  def update!(map,key) do
+    # Map.update!(map,key,fn v -> v * 2 end)
+    Map.update!(map,key,&(&1 * 2))
+
+    # Map.update!(%{a: 1}, :a, &(&1 * 2))
+    # %{a: 2}
+
+    # Map.update!(%{a: 1}, :b, &(&1 * 2))
+    # ** (KeyError) key :b not found in: %{a: 1}
+  end
+
+  # values(map)
+  # returns all values from map
+  Map.values(%{a: 1, b: 2})
 
 
 end

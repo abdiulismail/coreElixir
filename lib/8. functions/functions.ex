@@ -150,6 +150,50 @@ defmodule Geometry do
   typespec provides a way of compensating for the lack of a static type system.
   typespec allows you to document your code better
 
+
+  First-class functions
+  ======================
+  in elixir , a function is a first class citizen, which means it can be assigned to a variable
+  here assignning a function to a variable doesnt mean calling the function and storing its result to a variable,
+  instead , the function defnition itself is assigned, and you can use the variable to call the function.
+
+  iex()> square = fn(x) -> x * x end
+
+  the variable square now contains a function that computes square of a number,
+  because the funcion isnt bound to a global name, its also called an anonymous function or lambda
+
+  you can call this function by specifying the variable name followed by a dot and argument
+
+  iex()> square.(5)
+
+  because functions can be stored in a variable, they can be passed as arguments to other functions.
+
+  iex(3)> print_element = fn(x) -> IO.puts(x) end
+  iex(4)> Enum.each([1,2,3], print_element)
+  iex(4)> Enum.each([1,2,3], fn(x) -> IO.puts(x))
+  iex(4)> Enum.each([1,2,3], &IO.puts/1)
+
+
+  1
+  2
+  3
+  :ok
+
+
+  closures
+  ==========
+  a lambda can reference any variable from the outside scope
+  iex(1)> outside_var = 5
+  iex(2)> my_lambda = fn() -> IO.puts(outside_var) end
+  iex(3)> my_lambda.()
+  5
+
+  as long as you hold the reference to my_lambda, the variable outside_var is also accessible.
+  this is known as closure. by holding a reference to a lambda, you indirectly hold a reference to all variables it uses, even if those variables are from the external scope
+
+  rebinding a variable doesnt affect the previously defined lambda that references the same symbolic name
+
+
   """
 
   def rectangle_area(a, b) do

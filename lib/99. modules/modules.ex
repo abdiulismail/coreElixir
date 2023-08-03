@@ -36,7 +36,13 @@ defmodule MyModules do
       ...   end
       ..end
 
+  In the runtime, module names are aliases; and as we said, aliases are atoms
 
+  :code.get_path
+
+  gets the get_path function of the pure Erlang :code module
+
+  
   """
 
   def rectangle_area(a, b) do

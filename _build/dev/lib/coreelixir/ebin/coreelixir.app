@@ -7,6 +7,7 @@
                         'Elixir.MyMap','Elixir.MyModules','Elixir.MyTuple',
                         'Elixir.Myatoms','Elixir.Mymath',
                         'Elixir.Mymath.MathUtils','Elixir.Mynumbes',
-                        'Elixir.Myvariable','Elixir.TupleChallenges']},
+                        'Elixir.Myvariable','Elixir.Range',
+                        'Elixir.TupleChallenges']},
               {registered,[]},
               {vsn,"0.1.0"}]}.

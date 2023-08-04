@@ -11,6 +11,7 @@
                         'Elixir.Mymath','Elixir.Mymath.MathUtils',
                         'Elixir.Mynumbes','Elixir.Myvariable',
                         'Elixir.Operators','Elixir.PatternMatching',
-                        'Elixir.Range','Elixir.TupleChallenges']},
+                        'Elixir.Range','Elixir.Streams','Elixir.Structs',
+                        'Elixir.TupleChallenges']},
               {registered,[]},
               {vsn,"0.1.0"}]}.

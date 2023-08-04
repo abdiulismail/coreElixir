@@ -58,9 +58,8 @@ defmodule Loops do
 
   """
   def do_sum([]), do: 0
+
   def do_sum([head | tail]) do
     head + do_sum(tail)
   end
-
-
 end

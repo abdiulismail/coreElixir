@@ -42,7 +42,7 @@ defmodule MyModules do
 
   gets the get_path function of the pure Erlang :code module
 
-  
+
   """
 
   def rectangle_area(a, b) do

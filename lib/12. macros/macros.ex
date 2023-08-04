@@ -18,6 +18,6 @@ defmodule Macross do
     end
 
   so whenever we say something is macro, the underlying implication is that it runs at compile time and produces alternative code
-  
+
   """
 end

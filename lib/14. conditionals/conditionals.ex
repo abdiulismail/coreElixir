@@ -111,9 +111,4 @@ defmodule Conditionals do
 
 
   """
-
-
-
-
-
 end

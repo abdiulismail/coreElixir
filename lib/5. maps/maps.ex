@@ -325,8 +325,8 @@ defmodule MyMap do
 
   # intersect(map1,map2,fun)
   # intersect two maps, returning a map with the common keys and resolving conflicts through a function
-  def intersect2(map1,map2) do
-    Map.intersect(map1,map2, fn _k,v1,v2 -> v1 + v2 end)
+  def intersect2(map1, map2) do
+    Map.intersect(map1, map2, fn _k, v1, v2 -> v1 + v2 end)
   end
 
   # ====================================================================================================================
@@ -391,13 +391,12 @@ defmodule MyMap do
     # %{a: 4, b: 6, c: 8}
   end
 
-
   # pop(map,key,default \\ nil)
   # removes the value associated with key in map and returns the value and the updated map
   # if key id present in map, it returns {value, update_map} where value is the value of the key and updated_map is the result of removing key from the map.
   # if key is not present in map, {default,map} is returned
-  def pop(map,key) do
-    Map.pop(map,key)
+  def pop(map, key) do
+    Map.pop(map, key)
 
     # Map.pop(%{a: 1}, :a)
     # {1, %{}}
@@ -407,11 +406,10 @@ defmodule MyMap do
     # {3, %{a: 1}}
   end
 
-
   # pop!(map,key)
   # removes the value associated with key in map and returns the value and the updated map, or it raises keyError if key is not present
-  def pop2(map,key) do
-    Map.pop!(map,key)
+  def pop2(map, key) do
+    Map.pop!(map, key)
 
     # Map.pop!(%{a: 1}, :a)
     # {1, %{}}
@@ -421,14 +419,13 @@ defmodule MyMap do
     # ** (KeyError) key :b not found in: %{a: 1}
   end
 
-
   # pop_lazy(map,key,fun)
   # lazily returns and removes the value associated with key in map
   # if key is present in map, it returns {value, new_map} where value is the value of the key and new_map is the result of removing key from map.
   # if key is not present in map, {fun_Result, map} is returned, where fun_result is the result of applying fun
   # this is useful if the default value is very expensive to calculate or generally difficult to setup and teardown again
-  def pop_lazy(map,key) do
-    Map.pop_lazy(map,key, fn  -> 13 end)
+  def pop_lazy(map, key) do
+    Map.pop_lazy(map, key, fn -> 13 end)
 
     # map = %{a: 1}
     # fun = fn ->
@@ -439,14 +436,12 @@ defmodule MyMap do
     # {1, %{}}
     # Map.pop_lazy(map, :b, fun)
     # {13, %{a: 1}}
-
   end
-
 
   # put(map,key,value)
   # puts the given value under key in map
-  def put(map,key,value) do
-    Map.put(map,key,value)
+  def put(map, key, value) do
+    Map.put(map, key, value)
 
     # Map.put(%{a: 1}, :b, 2)
     # %{a: 1, b: 2}
@@ -456,8 +451,8 @@ defmodule MyMap do
 
   # put_new(map,key,value)
   # puts the given value under key unless the entry key already exist in map
-  def put_new(map,key,value) do
-    Map.put(map,key,value)
+  def put_new(map, key, value) do
+    Map.put(map, key, value)
 
     # Map.put_new(%{a: 1}, :b, 2)
     # %{a: 1, b: 2}
@@ -469,8 +464,8 @@ defmodule MyMap do
   # evaluates fun and puts the result under key in map unless key is already present
   # this function is useful in case you want to compute the value to put under key only if key is not already present,
   # for example, when the value is expensive to calculate or generally difficult to setup and teardown again
-  def put_new_lazy(map,key) do
-    Map.put_new_lazy(map,key,fn  -> 3 end)
+  def put_new_lazy(map, key) do
+    Map.put_new_lazy(map, key, fn -> 3 end)
 
     # map = %{a: 1}
     # fun = fn ->
@@ -486,7 +481,7 @@ defmodule MyMap do
   # reject(map,fun)
   # returns map excluding the pairs from map for which fun returns a truthy value
   def reject2(map) do
-    Map.reject(map,fn {_key, val} -> rem(val,2) == 1  end)
+    Map.reject(map, fn {_key, val} -> rem(val, 2) == 1 end)
 
     # Map.reject(%{one: 1, two: 2, three: 3}, fn {_key, val} -> rem(val, 2) == 1 end)
     # %{two: 2}
@@ -494,8 +489,8 @@ defmodule MyMap do
 
   # replace(map, key, value)
   # puts a value under key only if the key already exist in map
-  def replace(map,key,value) do
-    Map.replace(map,key,value)
+  def replace(map, key, value) do
+    Map.replace(map, key, value)
 
     # Map.replace(%{a: 1, b: 2}, :a, 3)
     # %{a: 3, b: 2}
@@ -504,12 +499,11 @@ defmodule MyMap do
     # %{a: 1}
   end
 
-
   # replace!(map,key,value)
   # put a value under key only if the key alredy exist in map
   # if key is not present in map, a KeyError exception is raised
-  def replace2(map,key,value) do
-    Map.replace!(map,key,value)
+  def replace2(map, key, value) do
+    Map.replace!(map, key, value)
 
     # Map.replace!(%{a: 1, b: 2}, :a, 3)
     # %{a: 3, b: 2}
@@ -518,13 +512,12 @@ defmodule MyMap do
     # ** (KeyError) key :b not found in: %{a: 1}
   end
 
-
   # replace_lazy(map,key,fun)
   # replaces the value under key using the given key function only if key already exist in map
   # in comparison to replace/3 , this can be useful when its expensive to calculate the value
   # if key does not exist, the original map is returned unchanged
-  def replace_lazy(map,key) do
-    Map.replace_lazy(map,key,fn v -> v * 4 end)
+  def replace_lazy(map, key) do
+    Map.replace_lazy(map, key, fn v -> v * 4 end)
 
     # Map.replace_lazy(%{a: 1, b: 2}, :a, fn v -> v * 4 end)
     # %{a: 4, b: 2}
@@ -537,8 +530,8 @@ defmodule MyMap do
   # take all entries corresponding to the given keys in map and extract them into a separate map
   # returns a tuple with the new map and the old map with removed keys
   # keys for which there are no entries in map are ignored
-  def split(map,keys) do
-    Map.split(map,keys)
+  def split(map, keys) do
+    Map.split(map, keys)
 
     # Map.split(%{a: 1, b: 2, c: 3}, [:a, :c, :e])
     # {%{a: 1, c: 3}, %{b: 2}}
@@ -550,7 +543,7 @@ defmodule MyMap do
   # returns a tuple with the first map containing  all the elements in map for which applying fun returned a truthy value,
   # and a second map with all the elements for which applying fun returned a falsy value(false, or nil)
   def split_with(map) do
-    Map.split_with(map, fn {_k,v} -> rem(v,2) end)
+    Map.split_with(map, fn {_k, v} -> rem(v, 2) end)
 
     # Map.split_with(%{a: 1, b: 2, c: 3, d: 4}, fn {_k, v} -> rem(v, 2) == 0 end)
     # {%{b: 2, d: 4}, %{a: 1, c: 3}}
@@ -568,13 +561,12 @@ defmodule MyMap do
   # take(map,keys)
   # returns a new map with all the key-value pairs in map where the key is in keys
   # if keys contain keys that are not in map, they are simply ignored
-  def take(map,keys) do
-    Map.take(map,keys)
+  def take(map, keys) do
+    Map.take(map, keys)
 
     # Map.take(%{a: 1, b: 2, c: 3}, [:a, :c, :e])
     # %{a: 1, c: 3}
   end
-
 
   # to_list(map)
   # converts map to a list
@@ -593,8 +585,8 @@ defmodule MyMap do
   # if key is present in map then existing value is passed to fun and its results is used as the updated value of key.
   # if key is not present in map, default is inserted as the value of key.
   # the default value will not be passed through the update function
-  def update(map,key) do
-    Map.update(map,key,13, fn v -> v * 2 end)
+  def update(map, key) do
+    Map.update(map, key, 13, fn v -> v * 2 end)
 
     # Map.update(%{a: 1}, :a, 13, fn existing_value -> existing_value * 2 end)
     # %{a: 2}
@@ -606,9 +598,9 @@ defmodule MyMap do
   # updates key with the given function
   # if key is present in map then the existing value is passed to fun and its result is used as the updated value of key.
   # if key is not present in map, a KeyError exception is raised
-  def update!(map,key) do
+  def update!(map, key) do
     # Map.update!(map,key,fn v -> v * 2 end)
-    Map.update!(map,key,&(&1 * 2))
+    Map.update!(map, key, &(&1 * 2))
 
     # Map.update!(%{a: 1}, :a, &(&1 * 2))
     # %{a: 2}
@@ -620,6 +612,4 @@ defmodule MyMap do
   # values(map)
   # returns all values from map
   Map.values(%{a: 1, b: 2})
-
-
 end
